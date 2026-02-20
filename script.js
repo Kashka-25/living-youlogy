@@ -110,47 +110,52 @@ function buildAudio() {
   actx = new (window.AudioContext||window.webkitAudioContext)();
   mgain = actx.createGain();
   mgain.gain.setValueAtTime(0, actx.currentTime);
-  mgain.gain.linearRampToValueAtTime(0.16, actx.currentTime+5);
+  mgain.gain.linearRampToValueAtTime(0.22, actx.currentTime+6);
   mgain.connect(actx.destination);
 
-  // Noise layers
-  ['lowpass','bandpass','highpass'].forEach((type,i) => {
-    const buf = actx.createBuffer(1,actx.sampleRate*4,actx.sampleRate);
-    const d = buf.getChannelData(0);
-    for(let j=0;j<d.length;j++) d[j]=Math.random()*2-1;
-    const src=actx.createBufferSource(); src.buffer=buf; src.loop=true;
-    const flt=actx.createBiquadFilter(); flt.type=type;
-    flt.frequency.value=[200,800,1500][i]; flt.Q.value=[0.5,0.3,0.2][i];
-    const g=actx.createGain(); g.gain.value=[0.10,0.035,0.015][i];
-    src.connect(flt); flt.connect(g); g.connect(mgain); src.start();
-  });
+  // Helper: looping white noise buffer
+  function makeNoise(duration) {
+    const buf = actx.createBuffer(2, actx.sampleRate*duration, actx.sampleRate);
+    for(let c=0;c<2;c++){const d=buf.getChannelData(c);for(let i=0;i<d.length;i++)d[i]=Math.random()*2-1;}
+    const src=actx.createBufferSource(); src.buffer=buf; src.loop=true; return src;
+  }
 
-  // Drone
-  [130.81,164.81,196.00,261.63].forEach((freq,i) => {
-    const osc=actx.createOscillator();
-    const g=actx.createGain();
-    const lfo=actx.createOscillator();
-    const lg=actx.createGain();
-    osc.type='sine'; osc.frequency.value=freq;
-    lfo.type='sine'; lfo.frequency.value=0.05+i*0.02; lg.gain.value=0.003;
-    lfo.connect(lg); lg.connect(osc.frequency);
-    g.gain.value=0.038-i*0.005;
-    osc.connect(g); g.connect(mgain);
-    osc.start(); lfo.start();
-  });
+  // Base rain hiss — highpass filtered noise
+  const rain1=makeNoise(6);
+  const hp=actx.createBiquadFilter(); hp.type='highpass'; hp.frequency.value=1200; hp.Q.value=0.3;
+  const g1=actx.createGain(); g1.gain.value=0.18;
+  rain1.connect(hp); hp.connect(g1); g1.connect(mgain); rain1.start();
 
-  // Pings
-  (function ping() {
+  // Mid rain body — bandpass
+  const rain2=makeNoise(5);
+  const bp=actx.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=600; bp.Q.value=0.5;
+  const g2=actx.createGain(); g2.gain.value=0.10;
+  rain2.connect(bp); bp.connect(g2); g2.connect(mgain); rain2.start();
+
+  // Low rumble — lowpass
+  const rain3=makeNoise(7);
+  const lp=actx.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=180; lp.Q.value=0.4;
+  const g3=actx.createGain(); g3.gain.value=0.06;
+  rain3.connect(lp); lp.connect(g3); g3.connect(mgain); rain3.start();
+
+  // Slow swell LFO on overall gain for natural variation
+  const lfo=actx.createOscillator();
+  const lg=actx.createGain(); lg.gain.value=0.04;
+  lfo.type='sine'; lfo.frequency.value=0.04;
+  lfo.connect(lg); lg.connect(mgain.gain); lfo.start();
+
+  // Occasional drip — soft high ping
+  (function drip() {
     if(!actx||actx.state==='closed') return;
     const osc=actx.createOscillator(); const g=actx.createGain();
     osc.type='sine';
-    osc.frequency.value=[523.25,659.25,783.99,1046.5][Math.floor(Math.random()*4)];
+    osc.frequency.value=1200+Math.random()*800;
     g.gain.setValueAtTime(0,actx.currentTime);
-    g.gain.linearRampToValueAtTime(0.055,actx.currentTime+0.02);
-    g.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+4);
+    g.gain.linearRampToValueAtTime(0.018,actx.currentTime+0.01);
+    g.gain.exponentialRampToValueAtTime(0.0001,actx.currentTime+1.8);
     osc.connect(g); g.connect(mgain);
-    osc.start(); osc.stop(actx.currentTime+4.5);
-    setTimeout(ping, 7000+Math.random()*11000);
+    osc.start(); osc.stop(actx.currentTime+2);
+    setTimeout(drip, 1500+Math.random()*4000);
   })();
 }
 
