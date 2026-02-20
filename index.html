@@ -1,1 +1,289 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Living YOULogy — With Cassidy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Raleway:wght@200;300;400&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="veil" aria-hidden="true"></div>
+<div id="cursor-glow" aria-hidden="true"></div>
+<div id="cursor-dot" aria-hidden="true"></div>
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+<button id="audio-btn" aria-label="Toggle ambient sound">
+  <svg id="icon-sound" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+  <svg id="icon-muted" viewBox="0 0 24 24" style="display:none"><path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/></svg>
+</button>
+
+<main>
+
+<!-- ══ HERO ══ -->
+<section id="hero" style="background:var(--void);padding:0;">
+  <div class="bg-img" style="background-image:url('images/bg1.png');opacity:0.22;filter:saturate(0.38) brightness(0.52);" aria-hidden="true"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,transparent 8%,var(--void) 65%),linear-gradient(to bottom,var(--void) 0%,transparent 20%,transparent 78%,var(--void) 100%);" aria-hidden="true"></div>
+  <div style="position:relative;z-index:2;text-align:center;display:flex;flex-direction:column;align-items:center;gap:32px;padding:40px 24px;opacity:0;animation:heroReveal 3.5s ease 5s forwards;">
+    <p style="font-family:'Raleway',sans-serif;font-weight:200;font-size:clamp(0.6rem,1.8vw,0.78rem);letter-spacing:0.38em;text-transform:uppercase;color:var(--gold);opacity:0.7;">YOU (Your Own Universe) presents</p>
+    <div class="candle-wrap" aria-hidden="true">
+      <div class="flame-container">
+        <div class="candle-glow"></div>
+        <div class="flame"></div>
+        <div class="spark spark-1"></div>
+        <div class="spark spark-2"></div>
+        <div class="spark spark-3"></div>
+        <div class="spark spark-4"></div>
+        <div class="spark spark-5"></div>
+        <div class="spark spark-6"></div>
+        <div class="spark spark-7"></div>
+        <div class="spark spark-8"></div>
+      </div>
+      <div class="candle-body"></div>
+    </div>
+    <h1 style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(3rem,11vw,7.5rem);line-height:1.0;color:var(--cream);text-shadow:0 0 80px rgba(200,169,110,0.12);">My Living<br><em style="font-style:italic;color:var(--gold-soft);">YOUlogy</em></h1>
+    <p style="font-family:'IM Fell English',serif;font-style:italic;font-size:clamp(0.95rem,2.8vw,1.35rem);color:var(--white-dim);letter-spacing:0.1em;">With Cassidy</p>
+    <div class="scroll-cue" aria-label="Scroll to continue"><span>enter</span><div class="line"></div></div>
+  </div>
+</section>
+
+<!-- ══ OPENING ══ -->
+<section id="opening" style="background:linear-gradient(180deg,var(--void) 0%,var(--deep) 100%);text-align:center;">
+  <div class="bg-img" style="background-image:url('images/bg2.png');opacity:0.13;filter:saturate(0.45) brightness(0.52);background-position:top center;" aria-hidden="true"></div>
+  <div class="bg-overlay-radial" aria-hidden="true"></div>
+  <div class="inner">
+    <p class="section-label reveal">A Living Eulogy with Cassidy</p>
+    <div class="reveal d1" style="max-width:600px;">
+      <p class="felt-text">
+        An evening of heart-channelled music, in a container curated and held<br>
+        by the witnessing of those who have nestled their way into my beating heart.
+      </p>
+    </div>
+    <div class="divider reveal d2" aria-hidden="true"></div>
+    <div class="reveal d2" style="max-width:580px;">
+      <p class="felt-text" style="font-size:clamp(1.25rem,3.8vw,2.1rem);color:var(--cream);">
+        &#8220;We&#8217;re all born and we all die.&#8221;<br>
+        <span style="font-size:0.78em;color:var(--white-dim);">This I believe to be the true beauty of life.</span>
+      </p>
+    </div>
+    <div class="divider reveal d3" aria-hidden="true"></div>
+    <p class="felt-text reveal d3">
+      I invite you to join me as I step into the uncomfortable,<br>
+      allowing my shadows the space to dance with the light.
+    </p>
+    <div class="reveal d4" style="display:flex;flex-direction:column;gap:4px;align-items:center;">
+      <p class="body-text" style="font-size:0.72rem;letter-spacing:0.22em;text-transform:uppercase;opacity:0.45;">02 · 03 · 2026 &nbsp;·&nbsp; 6:00pm – 9:00pm &nbsp;·&nbsp; TBC (sent upon RSVP)</p>
+      <p class="body-text" style="font-size:0.82rem;font-style:italic;font-family:'IM Fell English',serif;opacity:0.58;">(You are invited as one of those heart nestlers)</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INVITATION / PURPOSE ══ -->
+<section id="purpose" style="background:var(--deep);text-align:center;">
+  <div class="bg-img" style="background-image:url('images/bg2.png');opacity:0.10;filter:saturate(0.4) brightness(0.5);background-position:center;" aria-hidden="true"></div>
+  <div class="bg-overlay-radial" aria-hidden="true"></div>
+  <div class="inner inner-wide">
+    <p class="section-label reveal">YOU are invited</p>
+    <h2 class="section-title reveal d1">An evening of music,<br><em>reflection &amp; presence</em></h2>
+    <p class="felt-text reveal d2" style="max-width:640px;">
+      A space where love and truth can be spoken<br>while we&#8217;re still here to hear them.
+    </p>
+    <span class="ornament reveal d2" aria-hidden="true">✦ ✦ ✦</span>
+    <p class="body-text reveal d3" style="max-width:660px;">
+      This is not a funeral — but it is me, so the dramatic depth is on brand.<br><br>
+      On the contrary, it&#8217;s actually my version of a birthday celebration. It is an ode to the multi-layered beings that we are, symbolising the death and memory of what no longer serves me, as I make space for my choice of becoming.<br><br>
+      The concept of this YOUlogy is to curate a space so the unseen and unheard parts of me feel safe enough to display their depths through the art of expression. I intend on inverting the four walls that have heard me cry out — so I can offer permission to all of us to be heard and seen in all of our moving parts.
+    </p>
+    <p class="body-text reveal d4" style="font-family:'IM Fell English',serif;font-style:italic;font-size:clamp(0.9rem,2.3vw,1.05rem);">
+      I&#8217;ll be sharing songs written (if I can remember the lyrics &#x1F609;) and yet to be forged<br>
+      that are true and too vulnerable for me to share in any environment.
+    </p>
+    <div class="divider reveal d4" aria-hidden="true"></div>
+    <p class="felt-text reveal d4" style="max-width:580px;">
+      Despite me being the centre of attention for this event —<br>
+      it&#8217;s not just for me. It&#8217;s for the collective.<br>
+      <em style="color:var(--gold-soft);">It&#8217;s for all of us.</em>
+    </p>
+  </div>
+</section>
+
+<!-- ══ BEFORE YOU ARRIVE ══ -->
+<section id="before" style="background:linear-gradient(180deg,var(--deep) 0%,#0f0818 100%);text-align:center;">
+  <div class="bg-img" style="background-image:url('images/bg2.png');opacity:0.10;filter:saturate(0.4) brightness(0.48);background-position:bottom center;" aria-hidden="true"></div>
+  <div class="bg-overlay-radial" aria-hidden="true"></div>
+  <div class="inner inner-wide">
+    <p class="section-label reveal">A few things I&#8217;d like to invite YOU to do</p>
+    <h2 class="section-title reveal d1">Before attending<br><em>this YOUlogy</em></h2>
+    <ul class="mark-list reveal d2" style="max-width:640px;">
+      <li><strong>Pre-written YOUlogy</strong> — instructions in the RSVP form. Bring it with you to burn. Your words will be for your eyes only; if fire rules and venue allow, we shall send them into the ether — signifying the transmutation and transition into the life you choose to live.</li>
+      <li><strong>Childhood totem / teddy bear / stuffed animal</strong> — more than one is allowed. The space can never have too many, and someone else who doesn&#8217;t have one may appreciate the gesture. They will represent your inner children and mine — able to be seen, held and loved in a safe space.</li>
+    </ul>
+    <div class="divider reveal d3" aria-hidden="true"></div>
+    <p class="section-label reveal d3">Why these two things?</p>
+    <p class="body-text reveal d3" style="max-width:660px;">
+      Because this isn&#8217;t just my story — it&#8217;s ours. The eulogy invites you to contemplate life after death, while the childhood totem evokes life before we even conceptualised living. Together, they hold the bookends of our existence: the innocence we arrived with and the wisdom we&#8217;ll leave behind.
+    </p>
+    <p class="felt-text reveal d4" style="max-width:620px;">
+      This is a collective experience of welcoming the vulnerable — the light and the dark, the seen and unseen. By honouring both the children we once were and the inevitable end we&#8217;ll all meet, we create space to let go into the becoming of who we are now.
+    </p>
+    <p class="body-text reveal d4" style="max-width:560px;">
+      With gratitude and love for the small beings who got us here,<br>and compassion for the beings we&#8217;re still becoming.<br><br>
+      <em style="font-family:'IM Fell English',serif;font-style:italic;color:var(--gold-soft);">Your child self deserves to be witnessed. Your whole self does.</em>
+    </p>
+  </div>
+</section>
+
+<!-- ══ WHAT YOU SHOULD KNOW ══ -->
+<section id="know" style="background:linear-gradient(180deg,#0f0818 0%,var(--deep) 100%);text-align:center;">
+  <div class="bg-img" style="background-image:url('images/bg2.png');opacity:0.09;filter:saturate(0.35) brightness(0.45);background-position:center;" aria-hidden="true"></div>
+  <div class="bg-overlay-radial" aria-hidden="true"></div>
+  <div class="inner inner-wide">
+    <p class="section-label reveal">What you should know</p>
+    <h2 class="section-title reveal d1">You are in control<br><em>of your experience</em></h2>
+    <p class="body-text reveal d2" style="max-width:620px;">
+      This event holds space for emotional depth, but it is not therapy. It is not ritual in a formal sense. It is not designed to extract catharsis from you.
+    </p>
+    <ul class="mark-list reveal d3" style="max-width:640px;">
+      <li>If you feel uncomfortable at any point, the invitation is to sit and be with those emotions. If it does get too much, you are more than welcome to respectfully go outside for some fresh air at any point.</li>
+      <li>I ask for presence and minimal chatter while music is being played.</li>
+      <li>You may sit in silence the entire time.</li>
+      <li>You may feel nothing, and that is completely okay.</li>
+      <li>You may cry, laugh, or remain unmoved — there is no &#8220;right&#8221; response.</li>
+    </ul>
+    <div class="divider reveal d4" aria-hidden="true"></div>
+    <p class="felt-text reveal d4" style="max-width:580px;">
+      No one will ask anything of you that you don&#8217;t offer.<br>
+      This is not a performance of grief. It&#8217;s not a demand for vulnerability.<br><br>
+      It&#8217;s an experiment in being alive together — with whatever that brings.
+    </p>
+  </div>
+</section>
+
+<!-- ══ PRIVACY & CONSENT ══ -->
+<section id="privacy" style="background:linear-gradient(180deg,var(--deep) 0%,#0a0615 100%);text-align:center;">
+  <div class="bg-img" style="background-image:url('images/bg2.png');opacity:0.09;filter:saturate(0.3) brightness(0.4);background-position:top center;" aria-hidden="true"></div>
+  <div class="bg-overlay-radial" aria-hidden="true"></div>
+  <div class="inner">
+    <p class="section-label reveal">A gentle request</p>
+    <h2 class="section-title reveal d1">Privacy<br><em>&amp; Consent</em></h2>
+    <div class="card reveal d2">
+      <p class="card-heading">Photography &amp; Videography</p>
+      <p class="body-text" style="text-align:left;">Your childhood totem will be seen by those in the room. I request that no photographs or videos be taken for the duration of the event — especially no photos or videos of the altar at any point. The only captures that may take place will be from a designated photographer/videographer.</p>
+    </div>
+    <div class="card reveal d3">
+      <p class="card-heading">Your YOUlogy</p>
+      <p class="body-text" style="text-align:left;">Your own pre-written YOUlogy will be for your eyes only. If fire rules and venue allow, we shall burn them with fire as we send the prayers off into the ether, signifying the transmutation and transition into the life you choose to live.</p>
+    </div>
+    <div class="divider reveal d4" aria-hidden="true"></div>
+    <p class="felt-text reveal d4" style="font-size:clamp(0.88rem,2.2vw,1rem);">
+      To reiterate: these are not expectations. Not performances.<br>
+      <em style="color:var(--gold-soft);">They are open invitations.</em>
+    </p>
+  </div>
+</section>
+
+<!-- ══ DONATION ══ -->
+<section id="donation" style="background:linear-gradient(180deg,#0a0615 0%,var(--deep) 100%);text-align:center;">
+  <div class="bg-img" style="background-image:url('images/bg2.png');opacity:0.09;filter:saturate(0.3) brightness(0.4);background-position:center;" aria-hidden="true"></div>
+  <div class="bg-overlay-radial" aria-hidden="true"></div>
+  <div class="inner">
+    <p class="section-label reveal">An offering</p>
+    <h2 class="section-title reveal d1">This is a<br><em>donation-based event</em></h2>
+    <span class="ornament reveal d2" aria-hidden="true">✦ ✦ ✦</span>
+    <p class="body-text reveal d2" style="max-width:560px;">
+      There is no ticket price. No expectation. No transaction standing between you and this space.<br><br>
+      You are invited to give what this evening is worth to you —<br>whether that is a coin, a note, or simply the gift of your presence.<br><br>
+      <em style="font-family:'IM Fell English',serif;font-style:italic;color:var(--gold-soft);">Art does not have a fixed price. Only a felt one.</em>
+    </p>
+    <div class="card reveal d3" style="max-width:560px;">
+      <p class="card-heading">Can&#8217;t make it? Feeling generous from afar?</p>
+      <p class="body-text" style="margin-top:6px;">
+        If you won&#8217;t be in the room but still feel called to support the art, or if you&#8217;d like to send something ahead — you are so warmly welcome to.<br><br>
+        <em style="font-family:'IM Fell English',serif;font-style:italic;color:var(--gold-soft);">
+          Use &#8220;My Living YOUlogy&#8221; as your transaction reference —<br>that way I&#8217;ll know exactly whose heart reached across the distance.
+        </em>
+      </p>
+    </div>
+    <div class="payment-grid reveal d4">
+      <div class="payment-card">
+        <p class="payment-method">PayID</p>
+        <p class="payment-value">0425 210 973</p>
+        <p class="payment-name">Cassidy Dugan</p>
+      </div>
+      <div class="payment-card">
+        <p class="payment-method">Bank Transfer</p>
+        <p class="payment-value" style="font-size:clamp(0.85rem,2vw,1rem);letter-spacing:0.06em;">BSB 013 402<br>ACC 195 604 022</p>
+        <p class="payment-name">Cassidy Dugan</p>
+      </div>
+      <div class="payment-card" style="grid-column:1/-1;">
+        <p class="payment-method">Bitcoin</p>
+        <p class="payment-value" style="font-size:clamp(0.72rem,1.6vw,0.88rem);opacity:0.72;font-family:'Raleway',sans-serif;font-weight:300;line-height:1.7;">Scan the QR code on the donation card at the venue,<br>or ask Cassidy for the wallet address on the night.</p>
+      </div>
+    </div>
+    <div class="card reveal d4" style="max-width:520px;text-align:center;">
+      <p style="font-family:'Raleway',sans-serif;font-weight:200;font-size:0.58rem;letter-spacing:0.4em;text-transform:uppercase;color:var(--rose-glow);opacity:0.8;margin-bottom:12px;">A note on where your offering goes</p>
+      <p style="font-family:'IM Fell English',serif;font-style:italic;font-size:clamp(0.92rem,2.3vw,1.1rem);color:var(--cream);line-height:1.75;">
+        10% of all funds raised on the night go directly to the <strong style="font-style:normal;font-family:'Cormorant Garamond',serif;font-size:1.15em;color:var(--gold-soft);">Empatherapy Fund</strong> — supporting people who are seeking therapy but may not be able to afford it.
+      </p>
+      <p style="font-family:'Raleway',sans-serif;font-weight:200;font-size:0.78rem;color:var(--white-dim);line-height:1.85;margin-top:14px;">
+        Your generosity doesn&#8217;t just honour the art.<br>It holds space for someone else&#8217;s healing.
+      </p>
+    </div>
+    <p class="body-text reveal d4" style="font-size:0.68rem;opacity:0.32;max-width:440px;">
+      A donation vessel will also be present on the evening for cash offerings.<br>
+      Whatever you choose to offer is received with gratitude and without judgement.
+    </p>
+  </div>
+</section>
+
+<!-- ══ RSVP ══ -->
+<section id="rsvp" style="background:linear-gradient(180deg,var(--deep) 0%,var(--void) 100%);text-align:center;">
+  <div class="bg-img" style="background-image:url('images/bg2.png');opacity:0.08;filter:saturate(0.3) brightness(0.4);background-position:center;" aria-hidden="true"></div>
+  <div class="bg-overlay-radial" aria-hidden="true"></div>
+  <div class="inner">
+    <p class="section-label reveal">Your presence is the gift</p>
+    <h2 class="section-title reveal d1">Reserve your place</h2>
+    <p class="body-text reveal d2" style="max-width:440px;">Press the seal to open your invitation and confirm your attendance. The form also contains the instructions for your pre-written YOUlogy.</p>
+    <a class="rsvp-seal reveal d3"
+       href="https://docs.google.com/forms/d/e/1FAIpQLScxX-alk82FlE0C4PkU41lZZTCzkbfCBWVnVqAUwkVjG5eTjA/viewform?usp=publish-editor"
+       target="_blank" rel="noopener noreferrer" aria-label="Open RSVP form">
+      <span class="seal-symbol" aria-hidden="true">✾</span>
+      <span class="seal-text">I am coming</span>
+      <span class="seal-sub">Open invitation</span>
+    </a>
+  </div>
+</section>
+
+<!-- ══ CLOSING ══ -->
+<section id="closing" style="background:var(--void);text-align:center;">
+  <div class="bg-img" style="background-image:url('images/bg3.png');opacity:0.28;filter:saturate(0.32) brightness(0.68);background-position:center 20%;" aria-hidden="true"></div>
+  <div class="bg-overlay-radial" aria-hidden="true"></div>
+  <div class="bg-overlay-tb" aria-hidden="true"></div>
+  <div class="inner" style="position:relative;z-index:2;">
+    <p class="felt-text reveal" style="max-width:520px;">
+      If something stirs in you — a memory, a prayer, an intention,<br>
+      a truth you haven&#8217;t yet spoken — I invite you to offer it<br>
+      through the RSVP form, in the space provided.
+    </p>
+    <a class="reflection-link reveal d1"
+       href="https://docs.google.com/forms/d/e/1FAIpQLScxX-alk82FlE0C4PkU41lZZTCzkbfCBWVnVqAUwkVjG5eTjA/viewform?usp=publish-editor"
+       target="_blank" rel="noopener noreferrer">
+      Leave your reflection &rarr;
+    </a>
+    <div class="divider reveal d2" aria-hidden="true"></div>
+    <p class="reveal d2" style="font-family:'Cormorant Garamond',serif;font-weight:300;font-size:clamp(1.6rem,5vw,2.8rem);color:var(--cream);line-height:1.4;text-align:center;">
+      The door is open.<br>Come as you are.
+    </p>
+    <p class="body-text reveal d3" style="font-size:0.62rem;opacity:0.28;letter-spacing:0.28em;text-transform:uppercase;margin-top:48px;">
+      02 · 03 · 2026 &nbsp;✦&nbsp; With love, Cassidy
+    </p>
+  </div>
+</section>
+
+</main>
+<script src="script.js"></script>
+</body>
+</html>
